@@ -36,7 +36,7 @@ double lastpositive = -1;
 	int b;
 	std::cout << "Введите значение b: ";
 	std::cin >> b;
-	if (a <= b && std::cin.fail()) {
+	if (a >= b || std::cin.fail()) {
 		std::cout << "Введено неправильное значение b";
 		exit(0);
 	}
