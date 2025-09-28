@@ -1,18 +1,60 @@
 ﻿#include <iostream>
-#include <time.h>
 int main() {
 	setlocale(LC_ALL, "RU");
 	int n;
-	srand(time(NULL));
+	std::cout << "Введите количество элементов ";
+	std::cin >> n;
+	if (n < 0 || std::cin.fail()) {
+		std::cout << "Введено недействительное количество элементов";
+		exit(1);
 	}
-	int *array[1000] = new array[1000;
-	for (int j = 0; j < n; j++) {
-		std::cin >> array[j];
-	}
-	int max = array[0];
-	for (int i = 1; i <= n; i++) {
-		if (array[i] > max) {
-			max = array[i];
+double array[1000];
+for (int i = 0; i < n; i++) {
+	std::cin >> array[i];
+}
+double lastpositive = -1;
+	for (int j = n-1; j >= 0; j--) {
+		if (array[j] > 0) {
+			lastpositive = j;
+			break;
 		}
 	}
-	std::cout << "макс число массива: " << max;
+	double sum = 0;
+	if(lastpositive != -1){
+		for (int i = 0; i <= lastpositive; i++) {
+				sum += array[i];
+		}
+		}
+	std::cout << "Сумма элементов до последнего положительного " << sum << std::endl;
+	int a;
+	std::cout << "Введите значение a: ";
+	std::cin >> a;
+	if (std::cin.fail()) {
+		std::cout << "Введено неправильное значение a";
+		exit(0);
+	}
+	int b;
+	std::cout << "Введите значение b: ";
+	std::cin >> b;
+	if (a <= b && std::cin.fail()) {
+		std::cout << "Введено неправильное значение b";
+		exit(0);
+	}
+	int writeIndex = 0; 
+
+	for (int readIndex = 0; readIndex < n; readIndex++) {
+		double modulus = abs(array[readIndex]);
+		if (modulus < a || modulus > b) {
+			array[writeIndex] = array[readIndex];
+			writeIndex++;
+		}
+	}
+	for (int i = writeIndex; i < n; i++) {
+		array[i] = 0;
+	}
+	std::cout << "Сжатый массив:" << std::endl;
+	for (int i = 0; i < n; i++) {
+		std::cout << array[i] << " ";
+	}
+	return 0;
+ }
