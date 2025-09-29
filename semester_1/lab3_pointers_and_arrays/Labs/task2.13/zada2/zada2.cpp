@@ -4,7 +4,7 @@ int main() {
 	int n;
 	std::cout << "Введите количество элементов ";
 	std::cin >> n;
-	if (n < 0 || std::cin.fail()) {
+	if (std::cin.fail() || n < 0) {
 		std::cout << "Введено недействительное количество элементов";
 		exit(1);
 	}
@@ -36,7 +36,7 @@ double lastpositive = -1;
 	int b;
 	std::cout << "Введите значение b: ";
 	std::cin >> b;
-	if (a >= b || std::cin.fail()) {
+	if (std::cin.fail() || a >= b) {
 		std::cout << "Введено неправильное значение b";
 		exit(0);
 	}
