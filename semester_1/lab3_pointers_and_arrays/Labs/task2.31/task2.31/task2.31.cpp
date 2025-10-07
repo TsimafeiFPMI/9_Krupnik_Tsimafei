@@ -19,13 +19,13 @@ int main() {
 	}
 	if (chisl == 1) {
 		int n;
-		int arr[n_max];
 		std::cout << "Введите размер массива" << std::endl;
 		std::cin >> n;
 		if (std::cin.fail() || n < 1 || n >1000) {
 			std::cout << "Введен недействительный размер массива  ";
 			exit(0);
 		}
+		int* arr = new int[n];
 		std::cout << "Размер массива: " << n << std::endl;
 		for (int i = 0; i < n; i++) {
 			std::cin >> arr[i];
@@ -49,7 +49,7 @@ int main() {
 		if (lastpositive != -1 && fpos != -1 && fpos <= lastpositive) {
 			for (int i = fpos; i <= lastpositive; i++) {
 				sum += arr[i];
-			}
+			}delete[] arr;
 			std::cout << "Сумма элементов от первого до последнего положительного: " << sum << std::endl;
 		}
 		else {

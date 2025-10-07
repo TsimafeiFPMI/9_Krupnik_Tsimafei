@@ -17,16 +17,15 @@ int main() {
 		exit(777);
 	}
 	if (chisl == 1) {
-		const int n_max = 1000;
-		int arr[n_max];
-		int min = 100000;
-			int n;
+		int n;
 		std::cout << "Введите размер массива ";
 		std::cin >> n;
 		if (std::cin.fail() || n < 1 || n > 1000) {
 			std::cout << "Введено недействительное значение размера ( от 1 до 1000)";
 			exit(777);
 		}
+		int* arr = new int[n];
+		int min = 100000;
 			std::cout << "Размер массива: " << n << std::endl;
 		for (int i = 0; i < n; i++) {
 			std::cin >> arr[i];
@@ -50,6 +49,7 @@ int main() {
 			
 		}
 		std::cout << "Ваш минимальный элемент " << min << std::endl;
+		delete[] arr;
 	}
 	else {
 		srand(time(NULL));

@@ -70,10 +70,13 @@ int main() {
 	}
 	else {
 		srand(time(NULL));
-		double rand_n = 1 + rand() % 100;
-		double* arr = new double[rand_n];
+		const int N_MAX = 100;
+		double arr[N_MAX];
+		int rand_n = 1 + rand() % 100;
+		std::cout << "Размер массива: " << rand_n << std::endl;
 		for (int i = 0; i < rand_n; i++) {
 			arr[i] = -100 + rand() % 201;
+			std::cout << "Элемент " << i << ": " << arr[i] << std::endl;
 		}
 		double lastpositive = -1;
 		for (int j = rand_n - 1; j >= 0; j--) {
@@ -106,7 +109,7 @@ int main() {
 		std::cout << "Сжатый массив:" << std::endl;
 		for (int i = 0; i < rand_n; i++) {
 			std::cout << arr[i] << " ";
-		}delete[] arr;
+		}
 	}
 	
 	return 0;
