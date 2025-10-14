@@ -1,5 +1,12 @@
 ﻿#include <iostream>
 #include <time.h>
+int* fooarr(int size) {
+	if (size <= 0 || size > 1000) {
+		std::cout << "Неверный размер массива: " << size << std::endl;
+		exit(777);
+	}
+	return new int[size];
+}
 int main() {
 	setlocale(LC_ALL, "RU");
 	int x;
@@ -25,7 +32,7 @@ int main() {
 			std::cout << "Введен недействительный размер массива  ";
 			exit(0);
 		}
-		int* arr = new int[n];
+		int* arr = fooarr(n);
 		std::cout << "Размер массива: " << n << std::endl;
 		for (int i = 0; i < n; i++) {
 			std::cin >> arr[i];
@@ -71,7 +78,7 @@ int main() {
 	else {
 		srand(time(NULL));
 		int rand_n = 1 + rand() % 100;
-		int* arr = new int[rand_n];
+		int* arr = fooarr(rand_n);
 		std::cout << "Рандомный размер массива: " << rand_n << std::endl;
 		for (int i = 0; i < rand_n; i++) {
 			arr[i] = -100 + rand() % 201;
