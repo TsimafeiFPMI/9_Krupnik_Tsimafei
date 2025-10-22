@@ -143,7 +143,7 @@ int main() {
 
 	printMatrix(matrix, len);
 
-	std::cout << "\n--- Finding first column without negative elements ---\n";
+	std::cout << "\n Finding first column without negative elements \n";
 	int columnIndex = findFirstPositiveColumn(matrix, len);
 
 	if (columnIndex != -1) {
