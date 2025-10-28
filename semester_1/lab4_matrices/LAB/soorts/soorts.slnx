@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="soorts/soorts.vcxproj" />
+  <Project Path="soorts/soorts.vcxproj" Id="3f349b9a-590a-481c-ae3a-e7955f116d0f" />
 </Solution>
