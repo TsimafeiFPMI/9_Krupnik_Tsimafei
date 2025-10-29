@@ -70,7 +70,7 @@ int main() {
                 max = array[i];
             }
         }
-        std::cout << "Максимальное число массива: " << max << std::endl;
+        std::cout << "\nМаксимальное число массива: " << max << std::endl;
 
         // ПОИСК ПОСЛЕДНЕГО ПОЛОЖИТЕЛЬНОГО И ВЫЧИСЛЕНИЕ СУММЫ
         int lastPositiveIndex = -1;
@@ -88,7 +88,7 @@ int main() {
 
         double sum = 0;
         if (lastPositiveIndex != -1) {
-            for (int i = 0; i <= lastPositiveIndex; i++) {
+            for (int i = 0; i < lastPositiveIndex; i++) {
                 sum += array[i];
                 std::cout << "Добавляем элемент [" << i << "] = " << array[i] << ", текущая сумма: " << sum << std::endl;
             }
@@ -122,38 +122,47 @@ int main() {
 
     }
     else {
-        // СЛУЧАЙНЫЙ МАССИВ
-        int randomSize = 1 + std::rand() % MAX_SIZE;
-        std::cout << "Ваш размер массива: " << randomSize << std::endl;
+        double lower_bound, upper_bound;
+        std::cout << "Введите нижнюю границу для рандомных чисел: ";
+        std::cin >> lower_bound;
+        std::cout << "Введите верхнюю границу для рандомных чисел: ";
+        std::cin >> upper_bound;
 
-        double* array = new double[randomSize];
+        if (std::cin.fail() || lower_bound >= upper_bound) {
+            std::cout << "Неверные границы для рандомных чисел" << std::endl;
+            return 1;
+        }
 
-        // Заполнение массива случайными числами
-        for (int i = 0; i < randomSize; i++) {
-            array[i] = -100 + std::rand() % 201; // числа от -100 до 100
+        int n;
+        std::cout << "Введите размер массива (1-" << MAX_SIZE << "): ";
+        std::cin >> n;
+        if (std::cin.fail() || n < 1 || n > MAX_SIZE) {
+            std::cout << "Введено недействительное количество элементов" << std::endl;
+            return 1;
+        }
+
+        std::cout << "Ваш размер массива: " << n << std::endl;
+
+        double* array = new double[n];
+        double range = upper_bound - lower_bound;
+        for (int i = 0; i < n; i++) {
+            array[i] = lower_bound + (std::rand() % 10001) / 10000.0 * range;
             std::cout << "Ваш элемент " << i << ": " << array[i] << std::endl;
         }
-
-        // выводим весь массив
         std::cout << "=== ОТЛАДКА ===" << std::endl;
         std::cout << "Весь массив: ";
-        for (int i = 0; i < randomSize; i++) {
+        for (int i = 0; i < n; i++) {
             std::cout << array[i] << " ";
         }
-        std::cout << std::endl;
-
-        // Поиск максимального элемента
         double max = array[0];
-        for (int i = 1; i < randomSize; i++) {
+        for (int i = 1; i < n; i++) {
             if (array[i] > max) {
                 max = array[i];
             }
         }
         std::cout << "Максимальное число массива: " << max << std::endl;
-
-        // ПОИСК ПОСЛЕДНЕГО ПОЛОЖИТЕЛЬНОГО И ВЫЧИСЛЕНИЕ СУММЫ
         int lastPositiveIndex = -1;
-        for (int i = randomSize - 1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             std::cout << "Проверяем элемент [" << i << "] = " << array[i];
             if (array[i] > 0) {
                 lastPositiveIndex = i;
@@ -179,7 +188,7 @@ int main() {
 
         // Сжатие массива
         int writeIndex = 0;
-        for (int readIndex = 0; readIndex < randomSize; readIndex++) {
+        for (int readIndex = 0; readIndex < n; readIndex++) {
             double modulus = std::abs(array[readIndex]);
             if (modulus < a || modulus > b) {
                 array[writeIndex] = array[readIndex];
@@ -188,13 +197,13 @@ int main() {
         }
 
         // Заполнение оставшихся элементов нулями
-        for (int i = writeIndex; i < randomSize; i++) {
+        for (int i = writeIndex; i < n; i++) {
             array[i] = 0;
         }
 
         // Вывод сжатого массива
         std::cout << "Сжатый массив:" << std::endl;
-        for (int i = 0; i < randomSize; i++) {
+        for (int i = 0; i < n; i++) {
             std::cout << array[i] << " ";
         }
         std::cout << std::endl;
