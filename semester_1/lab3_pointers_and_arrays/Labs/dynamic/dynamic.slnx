@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="dynamic/dynamic.vcxproj" />
+  <Project Path="dynamic/dynamic.vcxproj" Id="a12b38ac-bf08-49a0-b30d-352875bf7017" />
 </Solution>

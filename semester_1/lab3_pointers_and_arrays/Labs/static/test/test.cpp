@@ -33,7 +33,6 @@ int main() {
     }
 
     if (choice == 1) {
-        // РУЧНОЙ ВВОД
         int n;
         std::cout << "Введите количество элементов (1-" << MAX_SIZE << "): ";
         std::cin >> n;
@@ -43,8 +42,6 @@ int main() {
         }
 
         double array[MAX_SIZE];
-
-        // Ввод элементов массива
         for (int i = 0; i < n; i++) {
             std::cout << "Введите элемент массива " << i << ": ";
             std::cin >> array[i];
@@ -54,25 +51,19 @@ int main() {
             }
             std::cout << "Ваш элемент " << i << ": " << array[i] << std::endl;
         }
-
-        // выводим весь массив
         std::cout << "=== ОТЛАДКА ===" << std::endl;
         std::cout << "Весь массив: ";
         for (int i = 0; i < n; i++) {
             std::cout << array[i] << " ";
         }
         std::cout << std::endl;
-
-        // Поиск максимального элемента
         double max = array[0];
         for (int i = 1; i < n; i++) {
             if (array[i] > max) {
                 max = array[i];
             }
         }
-        std::cout << "\nМаксимальное число массива: " << max << std::endl;
-
-        // ПОИСК ПОСЛЕДНЕГО ПОЛОЖИТЕЛЬНОГО И ВЫЧИСЛЕНИЕ СУММЫ
+        std::cout << "Максимальное число массива: " << max << std::endl;
         int lastPositiveIndex = -1;
         for (int i = n - 1; i >= 0; i--) {
             std::cout << "Проверяем элемент [" << i << "] = " << array[i];
