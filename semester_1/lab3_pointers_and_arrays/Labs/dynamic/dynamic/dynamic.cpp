@@ -28,69 +28,21 @@ int main() {
         exit(777);
     }
 
+    int n;
+    std::cout << "Введите размер массива ";
+    std::cin >> n;
+    if (std::cin.fail() || n < 1 || n > 1000) {
+        std::cout << "Введено недействительное значение размера ( от 1 до 1000 )";
+        exit(777);
+    }
+
+    double* arr = nullptr;
+
     if (chisl == 1) {
-        int n;
-        std::cout << "Введите размер массива ";
-        std::cin >> n;
-        if (std::cin.fail() || n < 1 || n > 1000) {
-            std::cout << "Введено недействительное значение размера ( от 1 до 1000 )";
-            exit(777);
-        }
+        
 
-        double* arr = fooarr(n);
-        int min_index = 0;
-        std::cout << "Размер массива: " << n << std::endl;
-        for (int i = 0; i < n; i++) {
-            std::cin >> arr[i];
-            std::cout << "Ваше число " << i << ": " << arr[i] << std::endl;
-            if (arr[i] < arr[min_index]) {
-                min_index = i;
-                std::cout << "Ваш минимальный элемент теперь, El: " << i << ": " << arr[i] << std::endl;
-            }
-        }
-        int lastpositive = -1;
-        for (int j = n - 1; j >= 0; j--) {
-            if (arr[j] > 0) {
-                lastpositive = j;
-                break;
-            }
-        }
-        int fpos = -1;
-        for (int j = 0; j < n; j++) {
-            if (arr[j] > 0) {
-                fpos = j;
-                break;
-            }
-        }
-        int sum = 0;
-        if (lastpositive != -1 && fpos != -1 && fpos <= lastpositive) {
-            for (int i = fpos; i <= lastpositive; i++) {
-                sum += arr[i];
-            }
-            std::cout << "Сумма элементов от первого до последнего положительного: " << sum << std::endl;
-        }
-        else {
-            std::cout << "Увы вам не выпало положительное число" << std::endl;
-        }
-        int write_index = 0;
-        for (int i = 0; i < n; i++) {
-            if (std::abs(arr[i]) > x) {
-                arr[write_index++] = arr[i];
-            }
-        }
-        for (int i = 0; i < n; i++) {
-            if (std::abs(arr[i]) <= x) {
-                arr[write_index++] = arr[i];
-            }
-        }
-        std::cout << "Преобразованный массив: ";
-        for (int i = 0; i < n; i++) {
-            std::cout << arr[i] << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "Ваш минимальный элемент " << arr[min_index] << std::endl;
+        arr = fooarr(n);
 
-        delete[] arr;
     }
     else {
         srand(time(NULL));
@@ -113,64 +65,61 @@ int main() {
             exit(777);
         }
 
-        double* arr = fooarr(rand_n);
-        int min_index = 0;
-        for (int i = 0; i < rand_n; i++) {
-            arr[i] = lower_bound + (rand() * 1.0 / RAND_MAX) * (upper_bound - lower_bound);
-            std::cout << "Ваше число " << i << ": " << arr[i] << std::endl;
-            if (arr[i] < arr[min_index]) {
-                min_index = i;
-                std::cout << "Ваш минимальный элемент теперь, El: " << i + 1 << ": " << arr[i] << std::endl;
-            }
-        }
-        int lastpositive = -1;
-        for (int j = rand_n - 1; j >= 0; j--) {
-            if (arr[j] > 0) {
-                lastpositive = j;
-                break;
-            }
-        }
-        int fpos = -1;
-        for (int j = 0; j < rand_n; j++) {
-            if (arr[j] > 0) {
-                fpos = j;
-                break;
-            }
-        }
-        int sum = 0;
-        if (lastpositive != -1 && fpos != -1 && fpos <= lastpositive) {
-            for (int i = fpos; i <= lastpositive; i++) {
-                sum += arr[i];
-            }
-            std::cout << "Сумма элементов от первого до последнего положительного: " << sum << std::endl;
-        }
-        else {
-            std::cout << "Увы вам не выпало положительное число" << std::endl;
-        }
-
-        // преобразование массива
-        int write_index = 0;
-        for (int i = 0; i < rand_n; i++) {
-            if (std::abs(arr[i]) > x) {
-                arr[write_index++] = arr[i];
-            }
-        }
-        for (int i = 0; i < rand_n; i++) {
-            if (std::abs(arr[i]) <= x) {
-                arr[write_index++] = arr[i];
-            }
-        }
-
-        std::cout << "Преобразованный массив: ";
-        for (int i = 0; i < rand_n; i++) {
-            std::cout << arr[i] << " ";
-        }
-        std::cout << std::endl;
-
-        std::cout << "Ваш минимальный элемент " << min_index + 1 << std::endl;
-
-        delete[] arr;
+        arr = fooarr(rand_n);
+      
     }
+
+    int min_index = 0;
+    std::cout << "Размер массива: " << n << std::endl;
+    for (int i = 0; i < n; i++) {
+        std::cin >> arr[i];
+        std::cout << "Ваше число " << i << ": " << arr[i] << std::endl;
+        if (arr[i] < arr[min_index]) {
+            min_index = i;
+            std::cout << "Ваш минимальный элемент теперь, El: " << i << ": " << arr[i] << std::endl;
+        }
+    }
+    int lastpositive = -1;
+    for (int j = n - 1; j >= 0; j--) {
+        if (arr[j] > 0) {
+            lastpositive = j;
+            break;
+        }
+    }
+    int fpos = -1;
+    for (int j = 0; j < n; j++) {
+        if (arr[j] > 0) {
+            fpos = j;
+            break;
+        }
+    }
+    int sum = 0;
+    if (lastpositive != -1 && fpos != -1 && fpos <= lastpositive) {
+        for (int i = fpos; i <= lastpositive; i++) {
+            sum += arr[i];
+        }
+        std::cout << "Сумма элементов от первого до последнего положительного: " << sum << std::endl;
+    }
+    else {
+        std::cout << "Увы вам не выпало положительное число" << std::endl;
+    }
+    int write_index = 0;
+    for (int i = 0; i < n; i++) {
+        if (std::abs(arr[i]) > x) {
+            for (int j = i; j > write_index; --j) {
+                std::swap(arr[j], arr[j - 1]);
+            }
+            ++write_index;
+        }
+    }
+    std::cout << "Преобразованный массив: ";
+    for (int i = 0; i < n; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "Ваш минимальный элемент " << arr[min_index] << std::endl;
+
+    delete[] arr;
 
     return 0;
 }

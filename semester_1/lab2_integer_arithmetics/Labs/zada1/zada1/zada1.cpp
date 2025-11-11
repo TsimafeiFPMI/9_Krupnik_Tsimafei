@@ -15,7 +15,7 @@ int main() {
 		std::cout << "Введено неправильное значение b";
 		exit(0);
 	}
-	  for (int i = a; i <= b; i++) {
+	for (int i = a; i <= b; i++) {
 		bool usl = false;
 		int n = abs(i);
 		while (n > 0 && !usl) {
@@ -32,7 +32,7 @@ int main() {
 		}
 		if (!usl) {                                           //если число не подходит под условие мы его выводим
 			std::cout << i << " ";
-	  }
+		}
 	}
 	return 0;
 }
