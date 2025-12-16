@@ -1,4 +1,4 @@
-cat dog
-У меня есть cat, он серый.
-А ещё я видел dog на улице!
-Кошки и собаки — друзья.
+Hello world
+my,sad,
+world.my,sad,world
+Hello,my,sad

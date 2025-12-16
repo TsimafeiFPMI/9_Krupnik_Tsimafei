@@ -33,7 +33,6 @@ std::string reverse_str(const std::string& s) {
 std::vector<std::string> split_words(const std::string& text) {
     std::vector<std::string> words;
     std::string word;
-
     for (std::string::size_type i = 0; i < text.length(); ++i) {
         char ch = text[i];
         if (is_alnum(ch)) {
@@ -83,7 +82,6 @@ std::string process_word(const std::string& word) {
 }
 std::string join_words(const std::vector<std::string>& words) {
     if (words.empty()) return "";
-
     std::string result = words[0];
     for (std::vector<std::string>::size_type i = 1; i < words.size(); ++i) {
         result += " ";
@@ -94,18 +92,13 @@ std::string join_words(const std::vector<std::string>& words) {
 int main() {
     std::string input;
     std::getline(std::cin, input);
-
     std::vector<std::string> words = split_words(input);
-
     std::vector<std::string> processed_words;
     for (std::vector<std::string>::size_type i = 0; i < words.size(); ++i) {
         std::string processed = process_word(words[i]);
         processed_words.push_back(processed);
     }
-
     std::string output = join_words(processed_words);
-
     std::cout << output << std::endl;
-
     return 0;
 }

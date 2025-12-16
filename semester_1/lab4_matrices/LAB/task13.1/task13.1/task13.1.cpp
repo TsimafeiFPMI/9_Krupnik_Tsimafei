@@ -35,9 +35,8 @@ void filing_random_number(int** matrix, int len) {
 
 	std::mt19937 gen(45218965);
 	std::uniform_int_distribution<int> dist(low, upp);
-
-	for (int i = 0; i < len; i++) {
-		for (int j = 0; j < len; j++) {
+	for (int i = 0; i < len; ++i) {
+		for (int j = 0; j < len; ++j) {
 			matrix[i][j] = dist(gen);
 		}
 	}
