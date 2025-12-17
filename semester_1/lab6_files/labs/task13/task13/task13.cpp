@@ -25,8 +25,8 @@ std::vector<std::string> searchwords(const std::string& line) {
 
 bool containsWord(const std::string& line, const std::string& word) {
     std::vector<std::string> words = searchwords(line);
-    for (std::vector<std::string>::const_iterator it = words.begin(); it != words.end(); ++it) {
-        if (*it == word) {
+    for (const std::string& w : words) {
+        if (w == word) {
             return true;
         }
     }
