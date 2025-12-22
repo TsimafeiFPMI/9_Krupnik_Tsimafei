@@ -1,13 +1,11 @@
-﻿// vector_impl.cpp
-#include "vector_impl.h"
+﻿#include "vector_impl.h"
 
 Vector::Vector() : data(nullptr), size_(0), capacity_(0) {
 }
 
-// ВАЖНО: конструктор с размером → size_ = n, и заполнить нулями!
 Vector::Vector(size_t n) : size_(n), capacity_(n) {
     if (n > 0) {
-        data = new int[n]();  // ← () даёт нули!
+        data = new int[n]();
     } else {
         data = nullptr;
     }

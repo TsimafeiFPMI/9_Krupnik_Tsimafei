@@ -15,7 +15,7 @@ private:
 public:
     // Конструкторы
     Vector();
-    Vector(size_t n);  // ← заполняет n нулями, size = n
+    Vector(size_t n);
     Vector(const Vector& other);
     Vector(std::initializer_list<int> list);
 
