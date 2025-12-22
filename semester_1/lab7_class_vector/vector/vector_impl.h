@@ -1,140 +1,50 @@
-#ifndef VECTOR_IMPL_H
+п»ї#ifndef VECTOR_IMPL_H
 #define VECTOR_IMPL_H
 
-#include <iostream>
 #include <cstddef>
+#include <stdexcept>
 #include <initializer_list>
+#include <ostream>
 
 class Vector {
 private:
-    int* data_ = nullptr;
-    size_t size_ = 0;
-    size_t capacity_ = 0;
+    int* data;
+    size_t size_;
+    size_t capacity_;
 
 public:
-    // Конструкторы
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
     Vector();
-    explicit Vector(size_t size);
-    Vector(std::initializer_list<int> init_list);
-    Vector(const Vector& ot#pragma once
+    Vector(size_t n);  // в†ђ Р·Р°РїРѕР»РЅСЏРµС‚ n РЅСѓР»СЏРјРё, size = n
+    Vector(const Vector& other);
+    Vector(std::initializer_list<int> list);
 
-#include <iostream>
-#include <stdexcept>
+    // РћРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ
+    Vector& operator=(const Vector& other);
 
-class Vector {
-    private:
-        size_t size_ = 0;
-        size_t capacity_ = 0;
-        int* data_ = nullptr;
+    // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
+    ~Vector();
 
-    public:
-        Vector();
-
-        Vector(size_t);
-
-        Vector(const Vector&);
-
-        Vector(std::initializer_list<int>);
-
-        ~Vector();
-
-        Vector& operator=(const Vector&);
-
-        void Swap(Vector&);
-
-        int& operator[](size_t);
-
-        const int& operator[](size_t) const;
-
-        int& At(size_t);
-
-        const int& At(size_t) const;
-
-        size_t Size() const;
-
-        size_t Capacity() const;
-
-        void PushBack(int);
-
-        void PopBack();
-
-        void Clear();
-
-        void Reserve(size_t);
-
-        friend std::ostream& operator<<(std::ostream&, const Vector&);
-};
-
-    // Метод Swap
-    void Swap(Vector& other) noexcept;
-
-    // Операторы индексирования
-    int& operator[](size_t index);
-    const int& operator[](size_t index) const;
-
-    // Метод At с проверкой границ
-    int& At(size_t index);
-#pragma once
-
-#include <iostream>
-#include <stdexcept>
-
-        class Vector {
-    private:
-        size_t size_ = 0;
-        size_t capacity_ = 0;
-        int* data_ = nullptr;
-
-    public:
-        Vector();
-
-        Vector(size_t);
-
-        Vector(const Vector&);
-
-        Vector(std::initializer_list<int>);
-
-        ~Vector();
-
-        Vector& operator=(const Vector&);
-
-        void Swap(Vector&);
-
-        int& operator[](size_t);
-
-        const int& operator[](size_t) const;
-
-        int& At(size_t);
-
-        const int& At(size_t) const;
-
-        size_t Size() const;
-
-        size_t Capacity() const;
-
-        void PushBack(int);
-
-        void PopBack();
-
-        void Clear();
-
-        void Reserve(size_t);
-
-        friend std::ostream& operator<<(std::ostream&, const Vector&);
-    };
-    size_t Capacity() const noexcept;
-
-    // Модификаторы
+    // РњРµС‚РѕРґС‹ вЂ” РўРћР›Р¬РљРћ PascalCase!
     void PushBack(int value);
     void PopBack();
-    void Clear() noexcept;
+    void Clear();
     void Reserve(size_t new_capacity);
+    void Swap(Vector& other);
 
-    // Оператор вывода (друг класса)
-    friend std::ostream& operator<<(std::ostream& os, const Vector& vec);
+    // Р”РѕСЃС‚СѓРї Рє СЌР»РµРјРµРЅС‚Р°Рј
+    int& operator[](size_t index);
+    const int& operator[](size_t index) const;
+    int& At(size_t index);
+    const int& At(size_t index) const;
+
+    // РРЅС„РѕСЂРјР°С†РёСЏ
+    size_t Size() const;
+    size_t Capacity() const;
+    bool IsEmpty() const;
+
+    // РћРїРµСЂР°С‚РѕСЂ РІС‹РІРѕРґР°
+    friend std::ostream& operator<<(std::ostream& os, const Vector& v);
 };
 
-// Оператор вывода (объявление)
-std::ostream& operator<<(std::ostream& os, const Vector& vec);
-
-#endif
+#endif  // VECTOR_IMPL_H
