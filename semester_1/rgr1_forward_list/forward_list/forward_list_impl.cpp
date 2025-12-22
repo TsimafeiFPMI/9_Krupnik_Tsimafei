@@ -47,13 +47,13 @@ ForwardList& ForwardList::operator=(const ForwardList& rhs) {
 
 ForwardList::ForwardList(size_t count, int32_t value) : head_(nullptr), size_(0) {
     for (size_t i = 0; i < count; ++i) {
-        PushBack(value);  // <-- PushBack сохраняет порядок
+        PushBack(value); 
     }
 }
 
 ForwardList::ForwardList(std::initializer_list<int32_t> init) : head_(nullptr), size_(0) {
     for (int32_t val : init) {
-        PushBack(val);  // <-- правильный порядок!
+        PushBack(val);
     }
 }
 
@@ -105,7 +105,6 @@ bool ForwardList::FindByValue(int32_t value) {
 }
 
 void ForwardList::Remove(int32_t value) {
-    // Remove from head
     while (head_ != nullptr && head_->value_ == value) {
         PopFront();
     }
