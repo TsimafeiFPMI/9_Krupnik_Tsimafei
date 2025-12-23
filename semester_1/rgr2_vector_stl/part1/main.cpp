@@ -10,8 +10,8 @@ int main() {
     std::vector<int> vec;
     int num;
 
-    // Ввод чисел с клавиатуры до конца ввода (Ctrl+D в Linux/macOS, Ctrl+Z в Windows)
-    std::cout << "Введите целые числа (для завершения ввода нажмите Ctrl+D или Ctrl+Z):\n";
+    // Ввод чисел с клавиатуры до конца ввода (Ctrl+Z в Windows)
+    std::cout << "Введите целые числа (для завершения ввода нажмите Ctrl+Z):\n";
     while (std::cin >> num) {
         vec.push_back(num);
     }
@@ -65,9 +65,13 @@ int main() {
     std::cin >> start_idx >> end_idx;
 
     // Проверка корректности индексов
-    if (start_idx >= total_count || end_idx >= total_count || start_idx > end_idx) {
+    if (start_idx >= total_count || end_idx >= total_count ) {
         std::cout << "Некорректный интервал. Пропускаем шаг 6.\n";
-    } else {
+    }
+    else if (start_idx > end_idx) {
+        std::swap(start_idx, end_idx);
+    }
+    else {
         long long interval_sum = std::accumulate(vec.begin() + start_idx, vec.begin() + end_idx + 1, 0LL);
         std::transform(vec.begin(), vec.end(), vec.begin(),
                        [interval_sum](int x) { return x + static_cast<int>(interval_sum); });
