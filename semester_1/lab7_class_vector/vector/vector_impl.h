@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include <initializer_list>
-#include <ostream>
+#include <iostream>
 
 class Vector {
 private:

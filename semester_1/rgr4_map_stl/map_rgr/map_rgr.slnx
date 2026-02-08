@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Forward/Forward.vcxproj" Id="b168c999-7b90-4b66-8bf7-20f82e8509b8" />
+  <Project Path="map_rgr/map_rgr.vcxproj" />
 </Solution>
