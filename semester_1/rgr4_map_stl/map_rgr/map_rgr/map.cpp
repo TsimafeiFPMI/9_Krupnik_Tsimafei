@@ -15,38 +15,32 @@ struct Mark {
     string subject;
     int mark;
 };
-
 struct Student {
     string name;
     int number;
     vector<Mark> marks;
-
     double avg() const {
         if (marks.empty()) return 0.0;
         double sum = 0;
         for (const auto& m : marks) sum += m.mark;
         return sum / marks.size();
     }
-
     int total() const {
         int sum = 0;
         for (const auto& m : marks) sum += m.mark;
         return sum;
     }
-
     bool has_bad() const {
         for (const auto& m : marks)
             if (m.mark <= 3) return true;
         return false;
     }
-
     bool has_subject(const string& subj) const {
         for (const auto& m : marks)
             if (m.subject == subj) return true;
         return false;
     }
 };
-
 map<int, Student> read_students(const string& filename) {
     map<int, Student> students;
     ifstream f(filename);
@@ -54,16 +48,13 @@ map<int, Student> read_students(const string& filename) {
         cout << "Не удалось открыть файл " << filename << endl;
         return students;
     }
-
     string line;
     while (getline(f, line)) {
         if (line.empty() || line.find_first_not_of(" \t") == string::npos)
             continue;
-
         stringstream ss(line);
         Student st;
         string token;
-
         // читаем ФИО до первого числа
         st.name = "";
         while (ss >> token) {
@@ -74,19 +65,16 @@ map<int, Student> read_students(const string& filename) {
             if (!st.name.empty()) st.name += " ";
             st.name += token;
         }
-
         // оценки
         string subj;
         int mark_val;
         while (ss >> subj >> mark_val) {
             st.marks.push_back({ subj, mark_val });
         }
-
         if (st.number != 0) {
             students[st.number] = move(st);
         }
     }
-
     return students;
 }
 
@@ -116,15 +104,12 @@ int main() {
     SetConsoleOutputCP(65001);
     SetConsoleCP(65001);
 #endif
-
     auto students = read_students("students.txt");
     if (students.empty()) {
         cout << "База студентов пуста или файл не прочитан\n";
         return 1;
     }
-
     vector<pair<int, Student>> vec(students.begin(), students.end());
-
     cout << "\n=== 1–2. Студенты по номеру зачётки ===\n";
     cout << string(70, '-') << '\n';
     print_list(vec, true);
@@ -215,7 +200,6 @@ int main() {
         if (p.second.has_bad())
             with_bad.push_back(p);
     print_list(with_bad);
-
     cout << '\n';
     return 0;
 }
